@@ -55,7 +55,7 @@ function displayWeatherInfo(data){
         tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`;
         humid.textContent = `Humidity: ${humidity}%`;
         describe.textContent = description;
-        windSpeed.textContent = `Wind speed: ${speed}`
+        windSpeed.textContent = `Wind speed: ${speed}km/h`
 
 }
 
