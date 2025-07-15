@@ -3,25 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wheather App</title>
+    <title>Advanced Weather Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />
 </head>
+
+
 <body>
-    <div class="card">
-        <div class="search">
-            <input type="text" class="search-bar" placeholder="Search">
-            <button id="submitBtn"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path></svg></button>
+    <div class="dashboard-container">
+        <!-- Main Current Weather -->
+        <div class="card current-weather">
+            <div class="current-header">
+                <div class="serch-box">
+
+                    <input class="search-bar card" type="text" placeholder="Search"><button class="my-btn card"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path></svg></button>
+                    <div class="suggestions-container"></div>
+                </div>
+                
+                <div class="location-main">San Francisco, CA</div>
+                <div class="current-temp-main">72°</div>
+                <div class="condition-main description">Sunny</div>
+                <div class="range-main">H:75° L:58°</div>
+            </div>
         </div>
-        <div class="weather">
-            <h1 class="city">Type a location, e.g., Lagos or New York...</h1>
-            <div class="temp"></div>
-            <img src="" alt="" class="icon">
-            <div class="description"></div>
-            <div class="humidity"></div>
-            <div class="wind"></div>
+
+        <!-- Quick Stats -->
+        <div class="card quick-stats">
+            <div class="card-header">
+                <div class="card-title">📊 Current Conditions</div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="feels_like">75°</div>
+                    <div class="stat-label">Feels Like</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="humidity">65%</div>
+                    <div class="stat-label" >Humidity</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="wind">8mph</div>
+                    <div class="stat-label">Wind</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">UV Index</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Metrics -->
+        <div class="card detailed-metrics">
+            <div class="card-header">
+                <div class="card-title">🔍 Detailed Metrics</div>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-value" id="pressure">30.15</div>
+                    <div class="metric-label">Pressure</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value visibility">10mi</div>
+                    <div class="metric-label">Visibility</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value dew-point">58°</div>
+                    <div class="metric-label">Dew Point</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value sun-rise">6:24</div>
+                    <div class="metric-label">Sunrise</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value sun-set">8:12</div>
+                    <div class="metric-label">Sunset</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">🌔</div>
+                    <div class="metric-label">Moon</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hourly Forecast -->
+        <div class="card hourly-forecast">
+            <div class="card-header">
+                <div class="card-title">⏰ 24-Hour Forecast</div>
+                <div class="card-subtitle">Detailed hourly conditions</div>
+            </div>
+            <div class="hourly-scroll">
+                <div class="hourly-card">
+                    <div class="hourly-time">Now</div>
+                    <div class="hourly-icon">☀️</div>
+                    <div class="hourly-temp">72°</div>
+                    <div class="hourly-details">8mph NW<br>65% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">3PM</div>
+                    <div class="hourly-icon">☀️</div>
+                    <div class="hourly-temp">74°</div>
+                    <div class="hourly-details">9mph NW<br>62% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">4PM</div>
+                    <div class="hourly-icon">🌤️</div>
+                    <div class="hourly-temp">73°</div>
+                    <div class="hourly-details">10mph W<br>68% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">5PM</div>
+                    <div class="hourly-icon">⛅</div>
+                    <div class="hourly-temp">71°</div>
+                    <div class="hourly-details">11mph W<br>70% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">6PM</div>
+                    <div class="hourly-icon">🌤️</div>
+                    <div class="hourly-temp">69°</div>
+                    <div class="hourly-details">8mph SW<br>72% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">7PM</div>
+                    <div class="hourly-icon">🌅</div>
+                    <div class="hourly-temp">67°</div>
+                    <div class="hourly-details">6mph SW<br>74% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">8PM</div>
+                    <div class="hourly-icon">🌆</div>
+                    <div class="hourly-temp">65°</div>
+                    <div class="hourly-details">5mph S<br>76% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">9PM</div>
+                    <div class="hourly-icon">🌙</div>
+                    <div class="hourly-temp">63°</div>
+                    <div class="hourly-details">4mph S<br>78% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">10PM</div>
+                    <div class="hourly-icon">🌙</div>
+                    <div class="hourly-temp">62°</div>
+                    <div class="hourly-details">3mph SE<br>80% humidity</div>
+                </div>
+                <div class="hourly-card">
+                    <div class="hourly-time">11PM</div>
+                    <div class="hourly-icon">🌙</div>
+                    <div class="hourly-temp">60°</div>
+                    <div class="hourly-details">2mph SE<br>82% humidity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Map -->
+        <div class="card weather-map">
+            <div class="card-header">
+                <div class="card-title">🗺️ Weather Radar</div>
+                <div class="card-subtitle">Precipitation & Temperature</div>
+            </div>
+            <div class="map-container">
+                <div class="map-overlay"></div>
+                <div class="map-legend">
+                    <div>🟡 Light Rain</div>
+                    <div>🟢 Clear</div>
+                    <div>🔴 Heavy Rain</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Forecast -->
+        <div class="card daily-forecast">
+            <div class="card-header">
+                <div class="card-title">📅 10-Day Forecast</div>
+                <div class="card-subtitle">Extended outlook</div>
+            </div>
+            <div class="daily-list">
+                <div class="daily-row">
+                    <div class="day-name">Today</div>
+                    <div class="day-icon">☀️</div>
+                    <div class="day-condition">Sunny, clear skies</div>
+                    <div class="day-high">75°</div>
+                    <div class="day-low">58°</div>
+                </div>
+                <div class="daily-row">
+                    <div class="day-name">Sat</div>
+                    <div class="day-icon">🌤️</div>
+                    <div class="day-condition">Partly cloudy</div>
+                    <div class="day-high">73°</div>
+                    <div class="day-low">59°</div>
+                </div>
+                <div class="daily-row">
+                    <div class="day-name">Sun</div>
+                    <div class="day-icon">⛅</div>
+                    <div class="day-condition">Mostly cloudy</div>
+                    <div class="day-high">70°</div>
+                    <div class="day-low">56°</div>
+                </div>
+                <div class="daily-row">
+                    <div class="day-name">Mon</div>
+                    <div class="day-icon">🌦️</div>
+                    <div class="day-condition">Light showers</div>
+                    <div class="day-high">66°</div>
+                    <div class="day-low">52°</div>
+                </div>
+                <div class="daily-row">
+                    <div class="day-name">Tue</div>
+                    <div class="day-icon">🌧️</div>
+                    <div class="day-condition">Heavy rain</div>
+                    <div class="day-high">64°</div>
+                    <div class="day-low">50°</div>
+                </div>
+                <div class="daily-row">
+                    <div class="day-name">Wed</div>
+                    <div class="day-icon">🌤️</div>
+                    <div class="day-condition">Clearing up</div>
+                    <div class="day-high">68°</div>
+                    <div class="day-low">54°</div>
+                </div>
+                <div class="daily-row">
+                    <div class="day-name">Thu</div>
+                    <div class="day-icon">☀️</div>
+                    <div class="day-condition">Sunny</div>
+                    <div class="day-high">72°</div>
+                    <div class="day-low">57°</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Air Quality & UV -->
+        <div class="card air-uv-combo">
+            <div class="combo-grid">
+                <div class="combo-section">
+                    <div class="combo-header">
+                        <div>
+                            <div class="combo-value">42</div>
+                            <div class="combo-label">Air Quality - Good</div>
+                        </div>
+                        <div style="font-size: 1.5rem;">🌬️</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%; background: #2ecc71;"></div>
+                    </div>
+                </div>
+                <div class="combo-section">
+                    <div class="combo-header">
+                        <div>
+                            <div class="combo-value">3</div>
+                            <div class="combo-label">UV Index - Moderate</div>
+                        </div>
+                        <div style="font-size: 1.5rem;">☀️</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wind & Pressure -->
+        <div class="card wind-pressure">
+            <div class="card-header">
+                <div class="card-title">💨 Wind & Pressure</div>
+            </div>
+            <div class="card-content" style="text-align: center;">
+                <div class="wind-compass">
+                    <div class="wind-needle"></div>
+                    <div class="compass-directions">N</div>
+                    <div style="position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; font-weight: 500;">S</div>
+                    <div style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); font-size: 0.7rem; font-weight: 500;">W</div>
+                    <div style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 0.7rem; font-weight: 500;">E</div>
+                </div>
+                <div style="font-size: 1.2rem; font-weight: 300; margin-bottom: 4px;">8 mph NW</div>
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 16px;">Gusts up to 12 mph</div>
+                <div style="font-size: 1.1rem; font-weight: 300;">30.15 inHg</div>
+                <div style="font-size: 0.75rem; opacity: 0.6;">Steady</div>
+            </div>
+        </div>
+
+        <!-- Weather Alerts -->
+        <div class="card weather-alerts">
+            <div class="card-header">
+                <div class="card-title">⚠️ Weather Alerts</div>
+                <div class="card-subtitle">Active advisories</div>
+            </div>
+            <div class="alert-item">
+                <div class="alert-title">🌊 High Surf Advisory</div>
+                <div class="alert-desc">Dangerous surf conditions with waves 8-12 feet. Avoid beaches and coastal areas. Valid until 6 PM PDT.</div>
+            </div>
+            <div class="alert-item">
+                <div class="alert-title">🌫️ Dense Fog Advisory</div>
+                <div class="alert-desc">Visibility reduced to less than 1/4 mile in dense fog. Use caution while driving. Expected to clear by 10 AM.</div>
+            </div>
+        </div>
+
+        <!-- Sun & Moon -->
+        <div class="card sun-moon">
+            <div class="card-header">
+                <div class="card-title">🌅 Astronomical Data</div>
+                <div class="card-subtitle">Sun & Moon information</div>
+            </div>
+            <div class="sun-moon-grid">
+                <div class="celestial-section">
+                    <div class="celestial-icon">🌅</div>
+                    <div class="celestial-time">6:24 AM</div>
+                    <div class="celestial-label">Sunrise</div>
+                </div>
+                <div class="celestial-section">
+                    <div class="celestial-icon">🌇</div>
+                    <div class="celestial-time">8:12 PM</div>
+                    <div class="celestial-label">Sunset</div>
+                </div>
+                <div class="celestial-section">
+                    <div class="celestial-icon">🌔</div>
+                    <div class="celestial-time">11:45 PM</div>
+                    <div class="celestial-label">Moonrise</div>
+                </div>
+                <div class="celestial-section">
+                    <div class="celestial-icon">🌑</div>
+                    <div class="celestial-time">1:32 PM</div>
+                    <div class="celestial-label">Moonset</div>
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="script.js"></script>
+    <script src="API.js"></script>
 </body>
 </html>
