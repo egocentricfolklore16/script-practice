@@ -8,7 +8,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
             background: url(images/Image_fx\ \(2\).jpg);
             background-repeat: no-repeat;
-            background-size: 150% 150%;
+            background-size: cover;
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
