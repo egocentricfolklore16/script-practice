@@ -587,6 +587,9 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
+            body{
+                background: url(images/mobile_bg.jpg);
+            }
             .dashboard-container {
                 grid-template-columns: repeat(8, 1fr);
                 gap: 12px;
