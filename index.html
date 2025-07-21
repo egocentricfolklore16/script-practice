@@ -9,18 +9,28 @@
 
 
 <body>
+    <video id="weather-bg" autoplay muted loop playsinline>
+  <source src="images/Whisk_cauajgi3nwmyy2viltfkytgtngvjyy1iyzbilwm.mp4" type="video/mp4">
+</video>
+
     <div class="dashboard-container">
         <!-- Main Current Weather -->
         <div class="card current-weather">
             <div class="current-header">
                 <div class="serch-box">
 
-                    <input class="search-bar card" type="text" placeholder="Search"><button class="my-btn card"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path></svg></button>
+                    <input class="search-bar card" type="text" placeholder="Search">
+                    <select class="card unit-select" id="unitSelect" onchange="changeTemperatureUnit()" name="selector" id="selector">
+                        <option class="card" value="metric">°C</option>
+                        <option class="card" value="imperial">°F</option>
+                        <option class="card" value="standard">°K</option>
+                    </select>
+                    <button class="my-btn card"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path></svg></button>
                     <div class="suggestions-container"></div>
                 </div>
                 
                 <div class="location-main">San Francisco, CA</div>
-                <div class="current-temp-main">72°</div>
+                <div class="current-temp-main convertUnit" id="temperature">72°</div>
                 <div class="condition-main description">Sunny</div>
                 <div class="range-main">H:75° L:58°</div>
             </div>
@@ -33,7 +43,7 @@
             </div>
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-value" id="feels_like">75°</div>
+                    <div class="stat-value" id="feels_like convertUnit">75°</div>
                     <div class="stat-label">Feels Like</div>
                 </div>
                 <div class="stat-item">
@@ -66,7 +76,7 @@
                     <div class="metric-label">Visibility</div>
                 </div>
                 <div class="metric-item">
-                    <div class="metric-value dew-point">58°</div>
+                    <div class="metric-value dew-point convertUnit">58°</div>
                     <div class="metric-label">Dew Point</div>
                 </div>
                 <div class="metric-item">
@@ -94,61 +104,61 @@
                 <div class="hourly-card">
                     <div class="hourly-time">Now</div>
                     <div class="hourly-icon">☀️</div>
-                    <div class="hourly-temp">72°</div>
+                    <div class="hourly-temp convertUnit">72°</div>
                     <div class="hourly-details">8mph NW<br>65% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">3PM</div>
                     <div class="hourly-icon">☀️</div>
-                    <div class="hourly-temp">74°</div>
+                    <div class="hourly-temp convertUnit">74°</div>
                     <div class="hourly-details">9mph NW<br>62% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">4PM</div>
                     <div class="hourly-icon">🌤️</div>
-                    <div class="hourly-temp">73°</div>
+                    <div class="hourly-temp convertUnit">73°</div>
                     <div class="hourly-details">10mph W<br>68% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">5PM</div>
                     <div class="hourly-icon">⛅</div>
-                    <div class="hourly-temp">71°</div>
+                    <div class="hourly-temp convertUnit">71°</div>
                     <div class="hourly-details">11mph W<br>70% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">6PM</div>
                     <div class="hourly-icon">🌤️</div>
-                    <div class="hourly-temp">69°</div>
+                    <div class="hourly-temp convertUnit">69°</div>
                     <div class="hourly-details">8mph SW<br>72% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">7PM</div>
                     <div class="hourly-icon">🌅</div>
-                    <div class="hourly-temp">67°</div>
+                    <div class="hourly-temp convertUnit">67°</div>
                     <div class="hourly-details">6mph SW<br>74% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">8PM</div>
                     <div class="hourly-icon">🌆</div>
-                    <div class="hourly-temp">65°</div>
+                    <div class="hourly-temp convertUnit">65°</div>
                     <div class="hourly-details">5mph S<br>76% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">9PM</div>
                     <div class="hourly-icon">🌙</div>
-                    <div class="hourly-temp">63°</div>
+                    <div class="hourly-temp convertUnit">63°</div>
                     <div class="hourly-details">4mph S<br>78% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">10PM</div>
                     <div class="hourly-icon">🌙</div>
-                    <div class="hourly-temp">62°</div>
+                    <div class="hourly-temp convertUnit">62°</div>
                     <div class="hourly-details">3mph SE<br>80% humidity</div>
                 </div>
                 <div class="hourly-card">
                     <div class="hourly-time">11PM</div>
                     <div class="hourly-icon">🌙</div>
-                    <div class="hourly-temp">60°</div>
+                    <div class="hourly-temp convertUnit">60°</div>
                     <div class="hourly-details">2mph SE<br>82% humidity</div>
                 </div>
             </div>
@@ -181,49 +191,49 @@
                     <div class="day-name">Today</div>
                     <div class="day-icon">☀️</div>
                     <div class="day-condition">Sunny, clear skies</div>
-                    <div class="day-high">75°</div>
+                    <div class="day-high convertUnit">75°</div>
                     <div class="day-low">58°</div>
                 </div>
                 <div class="daily-row">
                     <div class="day-name">Sat</div>
                     <div class="day-icon">🌤️</div>
                     <div class="day-condition">Partly cloudy</div>
-                    <div class="day-high">73°</div>
+                    <div class="day-high convertUnit">73°</div>
                     <div class="day-low">59°</div>
                 </div>
                 <div class="daily-row">
                     <div class="day-name">Sun</div>
                     <div class="day-icon">⛅</div>
                     <div class="day-condition">Mostly cloudy</div>
-                    <div class="day-high">70°</div>
+                    <div class="day-high convertUnit">70°</div>
                     <div class="day-low">56°</div>
                 </div>
                 <div class="daily-row">
                     <div class="day-name">Mon</div>
                     <div class="day-icon">🌦️</div>
                     <div class="day-condition">Light showers</div>
-                    <div class="day-high">66°</div>
+                    <div class="day-high convertUnit">66°</div>
                     <div class="day-low">52°</div>
                 </div>
                 <div class="daily-row">
                     <div class="day-name">Tue</div>
                     <div class="day-icon">🌧️</div>
                     <div class="day-condition">Heavy rain</div>
-                    <div class="day-high">64°</div>
+                    <div class="day-high convertUnit">64°</div>
                     <div class="day-low">50°</div>
                 </div>
                 <div class="daily-row">
                     <div class="day-name">Wed</div>
                     <div class="day-icon">🌤️</div>
                     <div class="day-condition">Clearing up</div>
-                    <div class="day-high">68°</div>
+                    <div class="day-high convertUnit">68°</div>
                     <div class="day-low">54°</div>
                 </div>
                 <div class="daily-row">
                     <div class="day-name">Thu</div>
                     <div class="day-icon">☀️</div>
                     <div class="day-condition">Sunny</div>
-                    <div class="day-high">72°</div>
+                    <div class="day-high convertUnit">72°</div>
                     <div class="day-low">57°</div>
                 </div>
             </div>
@@ -309,12 +319,12 @@
                 </div>
                 <div class="celestial-section">
                     <div class="celestial-icon">🌇</div>
-                    <div class="celestial-time">8:12 PM</div>
+                    <div class="celestial-time sun-set">8:12 PM</div>
                     <div class="celestial-label">Sunset</div>
                 </div>
                 <div class="celestial-section">
                     <div class="celestial-icon">🌔</div>
-                    <div class="celestial-time">11:45 PM</div>
+                    <div class="celestial-time sun-rise">11:45 PM</div>
                     <div class="celestial-label">Moonrise</div>
                 </div>
                 <div class="celestial-section">
@@ -328,5 +338,6 @@
 
     <script src="script.js"></script>
     <script src="API.js"></script>
+    <script src="temp.handler.js"></script>
 </body>
 </html>

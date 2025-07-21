@@ -64,7 +64,7 @@ const sunIse = `${sunrise}`;
         tempDisplay.textContent = `${(temp - 273.15).toFixed(0)}°`;
         humid.textContent = `${humidity}%`;
         describe.textContent = `${description}`;
-        windSpeed.textContent = `${speed}kmh`;
+        windSpeed.textContent = `${(speed * 3.6)}kmh`;
         feelsLike.textContent = `${(feels_like - 273.15).toFixed(0)}°`;
         presSure.textContent = `${pressure}`;
         sunRise.textContent = `${convertUnixToTime(sunIse)}`;
@@ -98,3 +98,9 @@ function displayError(message){
 
 
 
+async function fiveDayWeather(){
+    const{coord: {lon, lat}} = data;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    const response = await fetch(apiUrl);
+    console.log(response);
+}

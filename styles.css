@@ -8,7 +8,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
             background: url(images/Image_fx\ \(2\).jpg);
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: 300% 300%;
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
@@ -17,6 +17,17 @@
             letter-spacing: -0.01em;
             padding: 20px;
             animation: moveBg 20s linear infinite;
+        }
+
+        video{
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            scale: 2;
+            height: 100%;
+            width: 100%;
+            z-index: -1000;
         }
 
                         .search-wrapper {
@@ -583,6 +594,15 @@
             opacity: 0.6;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+
+        #selector{
+            color: white;
+            padding: 3px 13px;
+            option{
+                color: black;
+            }
         }
 
         /* Responsive Design */
